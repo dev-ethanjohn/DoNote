@@ -14,7 +14,7 @@ const Note = () => {
         </button>
       </div>
 
-      <p className="mt-2 text-sm text-gray-600">
+      <p className="mt-4 text-base text-gray-600">
         Don’t forget eggs, milk, and bread. Check expiration dates!
       </p>
     </div>

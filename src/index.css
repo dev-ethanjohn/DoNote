@@ -3,3 +3,15 @@
 html {
   background-color: #d5e0f5;
 }
+
+.long-dashed {
+  border-top: 2px dashed #aeb4c2;
+  border-image: repeating-linear-gradient(
+      to right,
+      #aeb4c2 0px,
+      #aeb4c2 10px,
+      transparent 10px,
+      transparent 16px
+    )
+    1;
+}

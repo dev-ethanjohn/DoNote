@@ -43,7 +43,7 @@ const NoteList = () => {
   const isValid = taskInput.trim().length >= 3;
 
   return (
-    <div className="grid grid-cols-[repeat(auto-fill,_minmax(300px,_400px))] gap-4  relative">
+    <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 relative">
       {todos.length === 0 ? (
         <p className="text-gray-500 text-center col-span-full">
           No tasks yet. Add one!

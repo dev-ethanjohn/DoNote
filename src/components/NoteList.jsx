@@ -28,7 +28,7 @@ const NoteList = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (taskInput.trim()) {
+    if (taskInput.trim().length >= 3) {
       setTodos(() => [
         ...todos,
         { id: Date.now(), task: taskInput, note: noteInput, completed: false },
@@ -39,6 +39,8 @@ const NoteList = () => {
     setNoteInput("");
     setIsModalOpen(false);
   };
+
+  const isValid = taskInput.trim().length >= 3;
 
   return (
     <div className="grid grid-cols-[repeat(auto-fill,_minmax(300px,_400px))] gap-4  relative">
@@ -66,6 +68,7 @@ const NoteList = () => {
         noteInput={noteInput}
         setNoteInput={setNoteInput}
         handleSubmit={handleSubmit}
+        isValid={isValid}
       />
     </div>
   );

@@ -6,12 +6,23 @@ const AddTodoModal = ({
   noteInput,
   setNoteInput,
   handleSubmit,
+  isValid,
 }) => {
   if (!isModalOpen) return null;
+  const charLimit = 60;
+
+  const handleChange = (e) => {
+    const text = e.target.value;
+    if (text.length <= charLimit) {
+      setTaskInput(e.target.value);
+    } else {
+      console.warn(`Note exceeds ${charLimit} characters!`);
+    }
+  };
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg shadow-xl p-6 w-80 md:w-96 max-h-[80vh] overflow-auto">
+      <div className="bg-white rounded-2xl shadow-xl p-6 w-96 md:w-[32rem] max-h-[80vh] overflow-auto">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold text-gray-800">Add New Task</h2>
           <button
@@ -35,24 +46,36 @@ const AddTodoModal = ({
             </svg>
           </button>
         </div>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-2">
           <input
             type="text"
             value={taskInput}
-            onChange={(e) => setTaskInput(e.target.value)}
+            onChange={handleChange}
             placeholder="e.g. Learn SwiftUI for iOS"
-            className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="border border-gray-300 font-semibold rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-700"
           />
+          <small className="pl-2 text-xs text-gray-400">
+            <span className="inline-block w-4 text-right">
+              {charLimit - taskInput.length}
+            </span>
+            <span> / {charLimit}</span>
+          </small>
+
           <textarea
             value={noteInput}
             onChange={(e) => setNoteInput(e.target.value)}
             placeholder="More info..."
-            className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-y"
-            rows="4"
+            className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-y mt-2"
+            rows="8"
           />
           <button
+            disabled={!isValid}
             type="submit"
-            className="bg-indigo-600 text-white rounded-lg py-2 px-4 hover:bg-indigo-700 transition"
+            className={`rounded-lg py-2 px-4 mt-4 transition ${
+              isValid
+                ? "bg-indigo-600 text-white hover:bg-indigo-700"
+                : "bg-gray-300 text-gray-500 cursor-not-allowed"
+            }`}
           >
             Create
           </button>

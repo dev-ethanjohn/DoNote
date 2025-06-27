@@ -52,8 +52,9 @@ const AddTodoModal = ({
             value={taskInput}
             onChange={handleChange}
             placeholder="e.g. Learn SwiftUI for iOS"
-            className="border border-gray-300 font-semibold rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-700"
+            className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-700 font-semibold placeholder:text-gray-400 placeholder:font-normal"
           />
+
           <small className="pl-2 text-xs text-gray-400">
             <span className="inline-block w-4 text-right">
               {charLimit - taskInput.length}

@@ -5,13 +5,13 @@ html {
 }
 
 .long-dashed {
-  border-top: 2px dashed #aeb4c2;
+  border-top: 2px dashed #d4d8e2;
   border-image: repeating-linear-gradient(
       to right,
-      #aeb4c2 0px,
-      #aeb4c2 10px,
-      transparent 10px,
-      transparent 16px
+      #d4d8e2 0px,
+      #d4d8e2 14px,
+      transparent 14px,
+      transparent 24px
     )
     1;
 }

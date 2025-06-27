@@ -17,6 +17,7 @@ const NoteList = () => {
       task: "Test task",
       note: "This note is for testing purposes only",
       completed: false,
+      date: new Date().toISOString(),
     },
   ]);
 
@@ -31,7 +32,13 @@ const NoteList = () => {
     if (taskInput.trim().length >= 3) {
       setTodos(() => [
         ...todos,
-        { id: Date.now(), task: taskInput, note: noteInput, completed: false },
+        {
+          id: Date.now(),
+          task: taskInput,
+          note: noteInput,
+          completed: false,
+          date: new Date().toISOString(),
+        },
       ]);
     }
 
@@ -56,6 +63,7 @@ const NoteList = () => {
             note={todo.note}
             completed={todo.completed}
             onDelete={() => onDelete(todo.id)}
+            date={todo.date}
           />
         ))
       )}

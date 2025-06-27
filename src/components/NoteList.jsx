@@ -11,8 +11,24 @@ const NoteList = () => {
   const [taskInput, setTaskInput] = useState("");
   const [noteInput, setNoteInput] = useState("");
 
+  const [todos, setTodos] = useState([
+    {
+      id: 1,
+      task: "Test task",
+      note: "This note is for testing purposes only",
+      completed: false,
+    },
+  ]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (taskInput.trim()) {
+      setTodos(() => [
+        ...todos,
+        { id: Date.now(), task: taskInput, note: noteInput, completed: false },
+      ]);
+    }
 
     setTaskInput("");
     setNoteInput("");
@@ -20,10 +36,21 @@ const NoteList = () => {
   };
 
   return (
-    <div className="grid grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] gap-4 justify-start relative">
-      <Note />
-      <Note />
-      <Note />
+    <div className="grid grid-cols-[repeat(auto-fill,_minmax(300px,_400px))] gap-4  relative">
+      {todos.length === 0 ? (
+        <p className="text-gray-500 text-center col-span-full">
+          No tasks yet. Add one!
+        </p>
+      ) : (
+        todos.map((todo) => (
+          <Note
+            key={todo.id}
+            task={todo.task}
+            note={todo.note}
+            completed={todo.completed}
+          />
+        ))
+      )}
       <AddTodoButton setIsModalOpen={setIsModalOpen} />
       <AddTodoModal
         isModalOpen={isModalOpen}

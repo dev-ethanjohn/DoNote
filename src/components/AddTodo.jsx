@@ -8,13 +8,13 @@ const AddTodo = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Placeholder for form submission logic
-    navigate("/", { viewTransition: true }); // Return to Home
+
+    navigate("/", { viewTransition: true });
   };
 
   return (
     <>
-      <Outlet /> {/* Renders the Home page content */}
+      <Outlet />
       <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
         <div className="bg-white rounded-lg shadow-xl p-6 w-80 md:w-96 max-h-[80vh] overflow-auto">
           <div className="flex justify-between items-center mb-4">

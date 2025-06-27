@@ -20,6 +20,11 @@ const NoteList = () => {
     },
   ]);
 
+  const onDelete = (idToDelete) => {
+    const updatedTodos = todos.filter((todo) => todo.id !== idToDelete);
+    setTodos(updatedTodos);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -48,6 +53,7 @@ const NoteList = () => {
             task={todo.task}
             note={todo.note}
             completed={todo.completed}
+            onDelete={() => onDelete(todo.id)}
           />
         ))
       )}

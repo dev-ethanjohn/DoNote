@@ -9,7 +9,10 @@ const Note = (props) => {
           <h2 className="text-lg font-medium text-gray-800">{props.task}</h2>
         </div>
 
-        <button className="text-gray-400 hover:text-red-500 transition">
+        <button
+          className="text-gray-400 hover:text-red-500 transition"
+          onClick={props.onDelete}
+        >
           <Trash2 size={20} />
         </button>
       </div>

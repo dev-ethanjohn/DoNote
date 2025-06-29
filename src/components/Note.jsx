@@ -1,4 +1,4 @@
-import { Trash2 } from "lucide-react";
+import { Edit3, Trash2 } from "lucide-react";
 
 const Note = (props) => {
   const formattedDate = new Date(props.date).toLocaleDateString("en-US", {
@@ -30,9 +30,18 @@ const Note = (props) => {
         )}
       </div>
 
-      <small className="text-xs text-gray-400 mt-2 text-left">
-        {formattedDate}
-      </small>
+      <div className="flex items-center justify-between">
+        <small className="text-xs text-gray-400 mt-2 text-left">
+          {formattedDate}
+        </small>
+
+        <button
+          className="text-gray-400 hover:text-blue-500 hover:scale-110 transition transform"
+          aria-label="Edit todo"
+        >
+          <Edit3 size={20} />
+        </button>
+      </div>
     </div>
   );
 };

@@ -12,12 +12,6 @@ const Note = (props) => {
       <div>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <input
-              type="checkbox"
-              className="w-5 h-5 accent-green-500"
-              checked={props.completed}
-              onChange={() => {}}
-            />
             <h2 className="text-lg font-medium text-gray-800">{props.task}</h2>
           </div>
           <button

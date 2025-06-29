@@ -13,6 +13,7 @@ const NoteList = () => {
   const [taskInput, setTaskInput] = useState("");
   const [noteInput, setNoteInput] = useState("");
 
+  // confetti
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -66,7 +67,7 @@ const NoteList = () => {
             task={task}
             note={note}
             completed={completed}
-            onDeleteRequest={(id) => setTodoToDelete(id)}
+            onDeleteRequest={() => setTodoToDelete(id)}
             date={date}
           />
         ))

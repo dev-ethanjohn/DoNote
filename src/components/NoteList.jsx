@@ -1,11 +1,13 @@
 import { useState } from "react";
 import AddTodoButton from "./AddTodoButton";
-import AddTodoModal from "./AddTodoModal";
+import AddTodoModal from "./modal/AddTodoModal";
+import DeleteTodoModal from "./modal/DeleteTodoModal";
 import Note from "./Note";
 
 const NoteList = () => {
   //  for button
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [todoToDelete, setTodoToDelete] = useState(null);
 
   // inputs
   const [taskInput, setTaskInput] = useState("");
@@ -24,6 +26,7 @@ const NoteList = () => {
   const onDelete = (idToDelete) => {
     const updatedTodos = todos.filter((todo) => todo.id !== idToDelete);
     setTodos(updatedTodos);
+    setTodoToDelete(null); //close modal
   };
 
   const handleSubmit = (e) => {
@@ -56,14 +59,15 @@ const NoteList = () => {
           No tasks yet. Add one!
         </p>
       ) : (
-        todos.map((todo) => (
+        todos.map(({ id, task, note, completed, date }) => (
           <Note
-            key={todo.id}
-            task={todo.task}
-            note={todo.note}
-            completed={todo.completed}
-            onDelete={() => onDelete(todo.id)}
-            date={todo.date}
+            key={id}
+            id={id}
+            task={task}
+            note={note}
+            completed={completed}
+            onDeleteRequest={(id) => setTodoToDelete(id)}
+            date={date}
           />
         ))
       )}
@@ -77,6 +81,13 @@ const NoteList = () => {
         setNoteInput={setNoteInput}
         handleSubmit={handleSubmit}
         isValid={isValid}
+      />
+
+      <DeleteTodoModal
+        isOpen={todoToDelete !== null}
+        todoId={todoToDelete}
+        onConfirm={onDelete}
+        onCancel={() => setTodoToDelete(null)}
       />
     </div>
   );

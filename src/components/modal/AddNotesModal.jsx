@@ -1,4 +1,4 @@
-const AddTodoModal = ({
+const AddNotesModal = ({
   isModalOpen,
   setIsModalOpen,
   taskInput,
@@ -24,7 +24,7 @@ const AddTodoModal = ({
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
       <div className="bg-white rounded-2xl shadow-xl p-6 w-96 md:w-[32rem] max-h-[80vh] overflow-auto">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-bold text-gray-800">Add New Task</h2>
+          <h2 className="text-2xl font-bold text-gray-800">Add New Note</h2>
           <button
             onClick={() => setIsModalOpen(false)}
             className="text-gray-600 hover:text-gray-800"
@@ -51,7 +51,7 @@ const AddTodoModal = ({
             type="text"
             value={taskInput}
             onChange={handleChange}
-            placeholder="e.g. Learn SwiftUI for iOS"
+            placeholder="SwiftUI navigation"
             className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-700 font-semibold placeholder:text-gray-400 placeholder:font-normal"
           />
 
@@ -86,4 +86,4 @@ const AddTodoModal = ({
   );
 };
 
-export default AddTodoModal;
+export default AddNotesModal;

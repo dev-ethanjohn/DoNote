@@ -1,4 +1,4 @@
-const DeleteTodoModal = ({ isOpen, todoId, onConfirm, onCancel }) => {
+const DeleteNotesModal = ({ isOpen, todoId, onConfirm, onCancel }) => {
   if (!isOpen) return null;
 
   const handleConfirm = () => {
@@ -17,7 +17,7 @@ const DeleteTodoModal = ({ isOpen, todoId, onConfirm, onCancel }) => {
           Confirm Deletion
         </h2>
         <p className="mb-4 text-gray-600">
-          Are you sure you want to delete this todo?
+          Are you sure you want to delete this note?
         </p>
         <div className="flex justify-center gap-4">
           <button
@@ -40,4 +40,4 @@ const DeleteTodoModal = ({ isOpen, todoId, onConfirm, onCancel }) => {
   );
 };
 
-export default DeleteTodoModal;
+export default DeleteNotesModal;

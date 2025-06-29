@@ -1,7 +1,7 @@
 import { useState } from "react";
 import AddNotesButton from "./AddNotesButton";
-import AddTodoModal from "./modal/AddTodoModal";
-import DeleteTodoModal from "./modal/DeleteTodoModal";
+import AddNotesModal from "./modal/AddNotesModal";
+import DeleteNotesModal from "./modal/DeleteNotesModal";
 import Note from "./Note";
 
 const NoteList = () => {
@@ -17,8 +17,8 @@ const NoteList = () => {
   const [todos, setTodos] = useState([
     {
       id: 1,
-      task: "Test task",
-      note: "This note is for testing purposes only",
+      task: "Test note",
+      note: "This description is for testing purposes only",
       completed: false,
       date: new Date().toISOString(),
     },
@@ -57,7 +57,7 @@ const NoteList = () => {
     <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 relative">
       {todos.length === 0 ? (
         <p className="text-gray-500 text-center col-span-full">
-          No tasks yet. Add one!
+          No written notes yet. Add one!
         </p>
       ) : (
         todos.map(({ id, task, note, completed, date }) => (
@@ -73,7 +73,7 @@ const NoteList = () => {
         ))
       )}
       <AddNotesButton setIsModalOpen={setIsModalOpen} />
-      <AddTodoModal
+      <AddNotesModal
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
         taskInput={taskInput}
@@ -84,7 +84,7 @@ const NoteList = () => {
         isValid={isValid}
       />
 
-      <DeleteTodoModal
+      <DeleteNotesModal
         isOpen={todoToDelete !== null}
         todoId={todoToDelete}
         onConfirm={onDelete}

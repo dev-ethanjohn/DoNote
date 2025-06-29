@@ -1,4 +1,4 @@
-const AddTodoButton = ({ setIsModalOpen }) => {
+const AddNotesButton = ({ setIsModalOpen }) => {
   return (
     <button
       onClick={() => setIsModalOpen(true)}
@@ -23,4 +23,4 @@ const AddTodoButton = ({ setIsModalOpen }) => {
   );
 };
 
-export default AddTodoButton;
+export default AddNotesButton;

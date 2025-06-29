@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AddTodoButton from "./AddTodoButton";
+import AddNotesButton from "./AddNotesButton";
 import AddTodoModal from "./modal/AddTodoModal";
 import DeleteTodoModal from "./modal/DeleteTodoModal";
 import Note from "./Note";
@@ -72,7 +72,7 @@ const NoteList = () => {
           />
         ))
       )}
-      <AddTodoButton setIsModalOpen={setIsModalOpen} />
+      <AddNotesButton setIsModalOpen={setIsModalOpen} />
       <AddTodoModal
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}

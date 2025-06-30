@@ -1,4 +1,5 @@
 import { Edit3, Trash2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Note = (props) => {
   const formattedDate = new Date(props.date).toLocaleDateString("en-US", {
@@ -12,7 +13,7 @@ const Note = (props) => {
       <div>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <h2 className="text-lg font-medium text-gray-800">{props.task}</h2>
+            <h2 className="text-lg font-medium text-gray-800">{props.title}</h2>
           </div>
           <button
             className="text-gray-400 hover:text-red-500 hover:scale-110 hover:rotate-6 transition transform"
@@ -35,12 +36,14 @@ const Note = (props) => {
           {formattedDate}
         </small>
 
-        <button
-          className="text-gray-400 hover:text-blue-500 hover:scale-110 transition transform"
-          aria-label="Edit todo"
-        >
-          <Edit3 size={20} />
-        </button>
+        <Link to={`/notes/${props.id}`} viewTransition>
+          <button
+            className="text-gray-400 hover:text-blue-500 hover:scale-110 transition transform"
+            aria-label="Edit todo"
+          >
+            <Edit3 size={20} />
+          </button>
+        </Link>
       </div>
     </div>
   );

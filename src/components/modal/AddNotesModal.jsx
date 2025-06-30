@@ -1,8 +1,8 @@
 const AddNotesModal = ({
   isModalOpen,
   setIsModalOpen,
-  taskInput,
-  setTaskInput,
+  titleInput,
+  setTitleInput,
   noteInput,
   setNoteInput,
   handleSubmit,
@@ -14,7 +14,7 @@ const AddNotesModal = ({
   const handleChange = (e) => {
     const text = e.target.value;
     if (text.length <= charLimit) {
-      setTaskInput(e.target.value);
+      setTitleInput(e.target.value);
     } else {
       console.warn(`Note exceeds ${charLimit} characters!`);
     }
@@ -49,7 +49,7 @@ const AddNotesModal = ({
         <form onSubmit={handleSubmit} className="flex flex-col gap-2">
           <input
             type="text"
-            value={taskInput}
+            value={titleInput}
             onChange={handleChange}
             placeholder="SwiftUI navigation"
             className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-700 font-semibold placeholder:text-gray-400 placeholder:font-normal"
@@ -57,7 +57,7 @@ const AddNotesModal = ({
 
           <small className="pl-2 text-xs text-gray-400">
             <span className="inline-block w-4 text-right">
-              {charLimit - taskInput.length}
+              {charLimit - titleInput.length}
             </span>
             <span> / {charLimit}</span>
           </small>

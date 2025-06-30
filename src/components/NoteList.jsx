@@ -10,14 +10,14 @@ const NoteList = () => {
   const [todoToDelete, setTodoToDelete] = useState(null);
 
   // inputs
-  const [taskInput, setTaskInput] = useState("");
+  const [titleInput, setTitleInput] = useState("");
   const [noteInput, setNoteInput] = useState("");
 
   // confetti
   const [todos, setTodos] = useState([
     {
       id: 1,
-      task: "Test note",
+      title: "Test note",
       note: "This description is for testing purposes only",
       completed: false,
       date: new Date().toISOString(),
@@ -33,12 +33,12 @@ const NoteList = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (taskInput.trim().length >= 3) {
+    if (titleInput.trim().length >= 3) {
       setTodos(() => [
         ...todos,
         {
           id: Date.now(),
-          task: taskInput,
+          title: titleInput,
           note: noteInput,
           completed: false,
           date: new Date().toISOString(),
@@ -46,12 +46,12 @@ const NoteList = () => {
       ]);
     }
 
-    setTaskInput("");
+    setTitleInput("");
     setNoteInput("");
     setIsModalOpen(false);
   };
 
-  const isValid = taskInput.trim().length >= 3;
+  const isValid = titleInput.trim().length >= 3;
 
   return (
     <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 relative">
@@ -60,11 +60,11 @@ const NoteList = () => {
           No written notes yet. Add one!
         </p>
       ) : (
-        todos.map(({ id, task, note, completed, date }) => (
+        todos.map(({ id, title, note, completed, date }) => (
           <Note
             key={id}
             id={id}
-            task={task}
+            title={title}
             note={note}
             completed={completed}
             onDeleteRequest={() => setTodoToDelete(id)}
@@ -76,8 +76,8 @@ const NoteList = () => {
       <AddNotesModal
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
-        taskInput={taskInput}
-        setTaskInput={setTaskInput}
+        titleInput={titleInput}
+        setTitleInput={setTitleInput}
         noteInput={noteInput}
         setNoteInput={setNoteInput}
         handleSubmit={handleSubmit}

@@ -5,6 +5,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Layout from "./components/Layout";
+import DetailNote from "./pages/DetailNote";
 import Home from "./pages/Home";
 
 const router = createBrowserRouter(
@@ -13,6 +14,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
       </Route>
+      <Route path="notes/:id" element={<DetailNote />} />
     </>
   )
 );

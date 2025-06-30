@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { addNote, deleteNote, getNotes } from "../utils/notesUtils";
 import AddNotesButton from "./AddNotesButton";
 import AddNotesModal from "./modal/AddNotesModal";
 import DeleteNotesModal from "./modal/DeleteNotesModal";
+
 import Note from "./Note";
 
 const NoteList = () => {
@@ -13,37 +15,23 @@ const NoteList = () => {
   const [titleInput, setTitleInput] = useState("");
   const [noteInput, setNoteInput] = useState("");
 
-  // confetti
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      title: "Test note",
-      note: "This description is for testing purposes only",
-      completed: false,
-      date: new Date().toISOString(),
-    },
-  ]);
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    setTodos(getNotes());
+  }, []);
 
   const onDelete = (idToDelete) => {
-    const updatedTodos = todos.filter((todo) => todo.id !== idToDelete);
-    setTodos(updatedTodos);
-    setTodoToDelete(null); //close modal
+    const updatedNotes = deleteNote(idToDelete);
+    setTodos(updatedNotes);
+    setTodoToDelete(null); // close modal
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (titleInput.trim().length >= 3) {
-      setTodos(() => [
-        ...todos,
-        {
-          id: Date.now(),
-          title: titleInput,
-          note: noteInput,
-          completed: false,
-          date: new Date().toISOString(),
-        },
-      ]);
+      const newNote = addNote(titleInput, noteInput);
+      setTodos((prev) => [...prev, newNote]);
     }
 
     setTitleInput("");

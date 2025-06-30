@@ -44,9 +44,11 @@ const NoteList = () => {
   return (
     <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 relative">
       {todos.length === 0 ? (
-        <p className="text-gray-500 text-center col-span-full">
-          No written notes yet. Add one!
-        </p>
+        <div className="flex items-center justify-center h-[60vh] col-span-full">
+          <p className="text-gray-500 text-center">
+            No written notes yet. Add one!
+          </p>
+        </div>
       ) : (
         todos.map(({ id, title, note, completed, date }) => (
           <Note

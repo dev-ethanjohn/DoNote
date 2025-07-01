@@ -42,7 +42,7 @@ const NoteList = () => {
   const isValid = titleInput.trim().length >= 3;
 
   return (
-    <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 relative">
+    <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 pb-24 relative">
       {todos.length === 0 ? (
         <div className="flex items-center justify-center h-[60vh] col-span-full">
           <p className="text-gray-500 text-center">

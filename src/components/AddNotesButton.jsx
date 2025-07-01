@@ -2,7 +2,7 @@ const AddNotesButton = ({ setIsModalOpen }) => {
   return (
     <button
       onClick={() => setIsModalOpen(true)}
-      className="fixed bottom-14 right-14 bg-indigo-600 text-white rounded-full w-20 h-20 flex items-center justify-center shadow-lg hover:bg-indigo-700 hover:scale-108 transition duration-300 ease-in-out z-50"
+      className="fixed bottom-9 right-9 lg:bottom-14 lg:right-14 bg-indigo-600 text-white rounded-full w-20 h-20 flex items-center justify-center shadow-lg hover:bg-indigo-700 hover:scale-108 transition duration-300 ease-in-out z-50"
       aria-label="Add new note"
     >
       <svg
